@@ -1,5 +1,4 @@
-var content = document.querySelector(".content")
-
+/*
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -13,7 +12,7 @@ function crearCompetidor(i) {
     dis.set(2, "90px")
     dis.set(3, "180px")
     var competidorDiv = document.createElement("div");
-    competidorDiv.setAttribute("class", "circulo1");
+    competidorDiv.setAttribute("class", "nota1");
     competidorDiv.dataset.velocidad = Math.random() * 10;
     content.appendChild(competidorDiv)
     var competidorImg = document.createElement("img");
@@ -28,18 +27,34 @@ function crearCompetidor(i) {
 setInterval(function () {
     crearCompetidor(1);
 }, 1000)
+*/
+var content = document.querySelector(".content");
 
+function crearNota() {
+    var nuevaNota = document.createElement("div");
+    nuevaNota.setAttribute("class", "nota");
+    content.appendChild(nuevaNota);
+}
+for (i = 1; i <= 6; i++) {
+    crearNota();
+}
+var cont = 0;
 var intervalo = setInterval(function () {
     cont = cont + 1;
-    var elementos = document.querySelectorAll(".circulo1");
+    var elementos = document.querySelectorAll(".nota");
     elementos.forEach(function (elemento) {
-        elemento.style.marginTop = (cont * elemento.dataset.velocidad) + "px"
-        elemento.style.marginTop = elemento.dataset.top
+        elemento.style.marginLeft = (cont) + "px";
     })
-}, 100);
+}, 10);
+
 // intervalo = "";
+
 function start() {
     cont = 0;
+
+}
+
+function pause() {
 
 }
 
@@ -47,20 +62,21 @@ function start() {
 document.addEventListener("keyup", function (evt) {
     console.log(evt.key)
     if (evt.key === "q") {
-        start()
+        start();
     } if (evt.key === "a") {
-        clearInterval(intervalo)
+        clearInterval(intervalo);
+        document.querySelectorAll(".nota").style.background = "black";
     } if (evt.key === "s") {
-        clearInterval(intervalo)
+        clearInterval(intervalo);
     } if (evt.key === "d") {
-        clearInterval(intervalo)
+        clearInterval(intervalo);
     } if (evt.key === "j") {
-        clearInterval(intervalo)
+        clearInterval(intervalo);
     } if (evt.key === "k") {
-        clearInterval(intervalo)
+        clearInterval(intervalo);
     } if (evt.key === "l") {
-        clearInterval(intervalo)
+        clearInterval(intervalo);
     } if (evt.key === "p") {
-        
+        pause();
     }
 })
