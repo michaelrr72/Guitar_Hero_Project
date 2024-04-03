@@ -14,7 +14,7 @@ function crearCompetidor(i) {
     var competidorDiv = document.createElement("div");
     competidorDiv.setAttribute("class", "nota1");
     competidorDiv.dataset.velocidad = Math.random() * 10;
-    content.appendChild(competidorDiv)
+    contenedor.appendChild(competidorDiv)
     var competidorImg = document.createElement("img");
     competidorImg.setAttribute("src", "images/cb.gif");
     competidorImg.setAttribute("width", "30px");
@@ -28,33 +28,63 @@ setInterval(function () {
     crearCompetidor(1);
 }, 1000)
 */
-var content = document.querySelector(".content");
+var contenedor = document.querySelector(".contenedor");
 
-function crearNota() {
+
+function crearNota(i) {
     var nuevaNota = document.createElement("div");
     nuevaNota.setAttribute("class", "nota");
-    content.appendChild(nuevaNota);
+    nuevaNota.dataset.velocidad = Math.random() * 10 + 1; // Asegurar que la velocidad no sea 0
+    // Asignar un marginTop inicial para cada nota para evitar que se superpongan
+    nuevaNota.style.marginTop = `-${i * 100}px`;
+    nuevaNota.innerHTML = i;
+    contenedor.appendChild(nuevaNota);
 }
-for (i = 1; i <= 6; i++) {
-    crearNota();
-}
-var cont = 0;
-var intervalo = setInterval(function () {
-    cont = cont + 1;
-    var elementos = document.querySelectorAll(".nota");
-    elementos.forEach(function (elemento) {
-        elemento.style.marginLeft = (cont) + "px";
-    })
-}, 10);
+var alturaContenedor = document.querySelector('.contenedor').offsetHeight; // Obtiene la altura del contenedor
 
-// intervalo = "";
+function moverNotas() {
+    cont++;
+    var notas = document.querySelectorAll(".nota");
+    notas.forEach(function (nota) {
+        var velocidadActual = parseFloat(nota.dataset.velocidad);
+        var posicionActual = parseFloat(nota.style.marginTop.replace('px', ''));
+        var nuevaPosicion = posicionActual + velocidadActual;
+
+        if (nuevaPosicion < alturaContenedor) {
+            nota.style.marginTop = `${nuevaPosicion}px`;
+        } else {
+            // nota.remove(); // Esto eliminará la nota del DOM cuando llegue al final
+            // O puedes simplemente detenerla colocándola justo en el límite:
+             nota.style.marginTop = `${alturaContenedor}px`;
+        }
+    });
+}
+
 
 function start() {
-    cont = 0;
+    // Limpiar el contenido previo para reiniciar el juego
+    contenedor.innerHTML = '';
 
+    // Crear notas iniciales
+    for (i = 1; i <= 6; i++) {
+        crearNota(i);
+    }
+
+    // Iniciar movimiento de las notas
+    cont = 0;
+    intervalo = setInterval(function () {
+        cont++;
+        var notas = document.querySelectorAll(".nota");
+        notas.forEach(function (nota) {
+            var velocidadActual = parseFloat(nota.dataset.velocidad);
+            var posicionActual = parseFloat(nota.style.marginTop.replace('px', ''));
+            nota.style.marginTop = `${posicionActual + velocidadActual}px`;
+        });
+    }, 10);
 }
 
-function pause() {
+document.querySelector('.play-pause').addEventListener('click', pausa);
+function pausa() {
 
 }
 
@@ -77,6 +107,6 @@ document.addEventListener("keyup", function (evt) {
     } if (evt.key === "l") {
         clearInterval(intervalo);
     } if (evt.key === "p") {
-        pause();
+        pausa();
     }
 })
