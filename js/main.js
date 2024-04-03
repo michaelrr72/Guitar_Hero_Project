@@ -61,6 +61,6 @@ document.addEventListener("keyup", function (evt) {
     } if (evt.key === "l") {
         clearInterval(intervalo)
     } if (evt.key === "p") {
-        clearInterval(intervalo)
+        
     }
 })
