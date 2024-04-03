@@ -1,12 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Guitar Hero KL</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-<div class="content"></div>
-<script src="js/main.js"></script>
+    <div class="game-details">
+        <h1 class="score">Puntuación: 0</h1>
+        <h1 class="max-streak">Racha Máxima: 0</h1>
+        <h1 class="streak">Racha: 0</h1>
+    </div>
+
+    <div class="start">PRESIONA "Q" PARA INICIAR!</div>
+
+    <div class="game-control-panel">
+        <button class="play-pause">Pausa</button>
+        <button class="mute">Silenciar</button>
+    </div>
+
+    <div class="content">
+        <div class="circulo"></div>
+    </div>
+    <div class="instrucciones">
+        <ul>
+            <h1>Instrucciones</h1>
+            <p>A medida que las notas de colores se muevan hacia los círculos en la parte inferior del diapasón,
+                presiona las teclas correspondientes en secuencia para anotar puntos.</p>
+            <p>¡Si logras acertar suficientes notas seguidas, tu multiplicador de puntuación aumentará!</p>
+        </ul>
+        <ul class="letras">
+            <li class="blue">A</li>
+            <li class="orange">S</li>
+            <li class="purple">D</li>
+            <li class="green">J</li>
+            <li class="red">K</li>
+            <li class="yellow">L</li>
+        </ul>
+    </div>
+    <div id="song"></div>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
