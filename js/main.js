@@ -65,7 +65,7 @@ document.addEventListener("keyup", function (evt) {
         start();
     } if (evt.key === "a") {
         clearInterval(intervalo);
-        document.querySelectorAll(".nota").style.background = "black";
+        document.querySelector(".nota").style.background = "black";
     } if (evt.key === "s") {
         clearInterval(intervalo);
     } if (evt.key === "d") {
