@@ -20,6 +20,17 @@ body {
     align-items: flex-start;
 }
 
+/* Estilo para la zona donde caerán las notas */
+.hit-zone {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 55%;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-top: 2px solid #ccc;
+}
+
 /* Estilo para los detalles del juego */
 .details {
     position: absolute;
@@ -44,7 +55,6 @@ body {
     right: 0;
     width: 20%;
     text-align: center;
-    /* Agrega aquí más estilos como color de fondo, márgenes, etc. */
 }
 
 /* Estilo para el botón de inicio */
