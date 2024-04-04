@@ -54,56 +54,33 @@ body {
     bottom: 0;
     right: 0;
     width: 20%;
+    height: 20%;
     text-align: center;
 }
 
-/* Estilo para el botón de inicio */
-.start {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-}
-
 .letras {
-    list-style: none;
-    padding: 0;
+    display: flex; /* Esto activa Flexbox para el contenedor */
+    justify-content: space-around; /* Esto distribuye el espacio entre los elementos de manera uniforme */
+    align-items: center; /* Esto centra los elementos verticalmente */
 }
-
 .nota {
-    display: flex;
-    width: 50px;
-    height: 50px;
-    background: #0000ff;
+    width: 50px; /* Ancho de cada elemento */
+    height: 50px; /* Alto de cada elemento */
+    background: #00f5c8;
     border-radius: 50%;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
+    display: flex; /* Activamos Flexbox para centrar el contenido */
+    justify-content: center; /* Centramos horizontalmente el contenido dentro de la caja */
+    align-items: center; /* Centramos verticalmente el contenido dentro de la caja */
+    color: white; /* Color del texto */
+    font-weight: bold; /* Negrita para el texto */
+    font-size: 20px; /* Tamaño del texto */
 }
-
-.blue {
-    background-color: blue;
-}
-
-.orange {
-    background-color: orange;
-}
-
-.purple {
-    background-color: purple;
-}
-
-.green {
-    background-color: green;
-}
-
-.red {
-    background-color: red;
-}
-
-.yellow {
-    background-color: yellow;
-    color: #000;
-}
+.blue { background-color: blue; }
+.orange { background-color: orange; }
+.purple { background-color: purple; }
+.green { background-color: green; }
+.red { background-color: red; }
+.yellow { background-color: yellow; color: black;}
 
 #song {
     display: none;
