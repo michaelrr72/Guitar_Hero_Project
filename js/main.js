@@ -1,35 +1,7 @@
-/*
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-const randomNumber = getRandomInt(1, 3);
-function crearCompetidor(i) {
-    const dis = new Map();
-    dis.set(1, "40px")
-    dis.set(2, "90px")
-    dis.set(3, "180px")
-    var competidorDiv = document.createElement("div");
-    competidorDiv.setAttribute("class", "nota1");
-    competidorDiv.dataset.velocidad = Math.random() * 10;
-    contenedor.appendChild(competidorDiv)
-    var competidorImg = document.createElement("img");
-    competidorImg.setAttribute("src", "images/cb.gif");
-    competidorImg.setAttribute("width", "30px");
-    competidorDiv.dataset.top = dis.get(getRandomInt(1, 3))
-    competidorDiv.appendChild(competidorImg)
-    // competidorDiv.innerHTML = i
-}
-
-
-setInterval(function () {
-    crearCompetidor(1);
-}, 1000)
-*/
 var contenedor = document.querySelector(".contenedor");
-
+var alturaContenedor = document.querySelector('.contenedor').offsetHeight;
+var pauseButton = document.querySelector('.play-pause');
+let pausado = false;
 
 function crearNota(i) {
     var nuevaNota = document.createElement("div");
@@ -40,62 +12,48 @@ function crearNota(i) {
     nuevaNota.innerHTML = i;
     contenedor.appendChild(nuevaNota);
 }
-var alturaContenedor = document.querySelector('.contenedor').offsetHeight; // Obtiene la altura del contenedor
 
 function moverNotas() {
-    cont = 0;
-    cont++;
     var notas = document.querySelectorAll(".nota");
     notas.forEach(function (nota) {
         var velocidadActual = parseFloat(nota.dataset.velocidad);
         var posicionActual = parseFloat(nota.style.marginTop.replace('px', ''));
         var nuevaPosicion = posicionActual + velocidadActual;
 
-        if (nuevaPosicion < alturaContenedor) {
-            nota.style.marginTop = `${nuevaPosicion}px`;
-        } else {
-            nota.remove(); // Esto eliminará la nota del DOM cuando llegue al final
-            // O puedes simplemente detenerla colocándola justo en el límite:
-            //nota.style.marginTop = `${alturaContenedor}px`;
+        // Mover la nota hacia abajo según su velocidad
+        nota.style.marginTop = `${nuevaPosicion}px`;
+
+        // Verificar si la nota ha salido del contenedor
+        if (nuevaPosicion > alturaContenedor) {
+            nota.remove(); // Eliminar la nota del DOM
         }
     });
 }
 
+function generarNotasContinuamente() {
+    // Define un intervalo para la generación de notas
+    var intervaloDeNotas = setInterval(function() {
+        var i = Math.floor(Math.random() * 6) + 1; // Genera un número aleatorio entre 1 y 6 para el tipo de nota
+        crearNota(i);
+    }, 1000); // Crea una nota cada 1000 milisegundos (1 segundo)
+
+    // Para detener la generación de notas, usa clearInterval(intervaloDeNotas);
+    // Podrías llamar a clearInterval cuando el juego se pause o termine
+}
 
 function start() {
     // Limpiar el contenido previo para reiniciar el juego
     contenedor.innerHTML = '';
     pausado = false;
-    /*
     // Crear notas iniciales
     for (i = 1; i <= 6; i++) {
         crearNota(i);
     }
-*/
-    // Iniciar movimiento de las notas
     intervalo = setInterval(moverNotas, 10);
-
-    setInterval(function () {
-        // Aquí generas un valor aleatorio para i que determina el tipo de nota
-        var i = Math.floor(Math.random() * 6) + 1; // Genera un número entre 1 y 6
-        crearNota(i);
-    }, 1000);
-    /*
-    // Iniciar movimiento de las notas
-    cont = 0;
-    intervalo = setInterval(function () {
-        cont++;
-        var notas = document.querySelectorAll(".nota");
-        notas.forEach(function (nota) {
-            var velocidadActual = parseFloat(nota.dataset.velocidad);
-            var posicionActual = parseFloat(nota.style.marginTop.replace('px', ''));
-            nota.style.marginTop = `${posicionActual + velocidadActual}px`;
-        });
-    }, 10);*/
+    generarNotasContinuamente(); 
 }
 
-const pauseButton = document.querySelector('.play-pause');
-let pausado = false;
+
 
 pauseButton.addEventListener('click', togglePause);
 function togglePause() {
