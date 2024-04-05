@@ -43,6 +43,7 @@ function crearNota(i) {
 var alturaContenedor = document.querySelector('.contenedor').offsetHeight; // Obtiene la altura del contenedor
 
 function moverNotas() {
+    cont = 0;
     cont++;
     var notas = document.querySelectorAll(".nota");
     notas.forEach(function (nota) {
@@ -53,9 +54,9 @@ function moverNotas() {
         if (nuevaPosicion < alturaContenedor) {
             nota.style.marginTop = `${nuevaPosicion}px`;
         } else {
-            // nota.remove(); // Esto eliminará la nota del DOM cuando llegue al final
+            nota.remove(); // Esto eliminará la nota del DOM cuando llegue al final
             // O puedes simplemente detenerla colocándola justo en el límite:
-            nota.style.marginTop = `${alturaContenedor}px`;
+            //nota.style.marginTop = `${alturaContenedor}px`;
         }
     });
 }
@@ -65,11 +66,21 @@ function start() {
     // Limpiar el contenido previo para reiniciar el juego
     contenedor.innerHTML = '';
     pausado = false;
+    /*
     // Crear notas iniciales
     for (i = 1; i <= 6; i++) {
         crearNota(i);
     }
+*/
+    // Iniciar movimiento de las notas
+    intervalo = setInterval(moverNotas, 10);
 
+    setInterval(function () {
+        // Aquí generas un valor aleatorio para i que determina el tipo de nota
+        var i = Math.floor(Math.random() * 6) + 1; // Genera un número entre 1 y 6
+        crearNota(i);
+    }, 1000);
+    /*
     // Iniciar movimiento de las notas
     cont = 0;
     intervalo = setInterval(function () {
@@ -80,7 +91,7 @@ function start() {
             var posicionActual = parseFloat(nota.style.marginTop.replace('px', ''));
             nota.style.marginTop = `${posicionActual + velocidadActual}px`;
         });
-    }, 10);
+    }, 10);*/
 }
 
 const pauseButton = document.querySelector('.play-pause');
@@ -149,7 +160,7 @@ document.addEventListener("keyup", function (evt) {
             }
         }
     });
-    
+
     if (evt.key === "q") {
         start();
     }
