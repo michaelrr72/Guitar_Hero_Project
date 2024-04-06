@@ -20,6 +20,15 @@ body {
     align-items: flex-start;
 }
 
+.letras {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
 /* Estilo para la zona donde caerán las notas */
 .hit-zone {
     position: absolute;
@@ -31,12 +40,20 @@ body {
     border-top: 2px solid #ccc;
 }
 
+.zona-de-acierto {
+    position: absolute;
+    bottom: 50px;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(191, 255, 0, 0.281);
+}
+
 /* Estilo para los detalles del juego */
 .details {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 20%;
 }
 
 /* Estilo para las instrucciones */
@@ -58,38 +75,53 @@ body {
     text-align: center;
 }
 
-.start {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 20%;
-    height: 20%;
-    text-align: center;
-}
 
-.letras {
-    display: flex; /* Esto activa Flexbox para el contenedor */
-    justify-content: space-around; /* Esto distribuye el espacio entre los elementos de manera uniforme */
-    align-items: center; /* Esto centra los elementos verticalmente */
-}
+
 .nota {
-    width: 50px; /* Ancho de cada elemento */
-    height: 50px; /* Alto de cada elemento */
+    width: 50px;
+    /* Ancho de cada elemento */
+    height: 50px;
+    /* Alto de cada elemento */
     background: #00f5c8;
     border-radius: 50%;
-    display: flex; /* Activamos Flexbox para centrar el contenido */
-    justify-content: center; /* Centramos horizontalmente el contenido dentro de la caja */
-    align-items: center; /* Centramos verticalmente el contenido dentro de la caja */
-    color: white; /* Color del texto */
-    font-weight: bold; /* Negrita para el texto */
-    font-size: 20px; /* Tamaño del texto */
+    display: flex;
+    /* Activamos Flexbox para centrar el contenido */
+    justify-content: center;
+    /* Centramos horizontalmente el contenido dentro de la caja */
+    align-items: center;
+    /* Centramos verticalmente el contenido dentro de la caja */
+    color: white;
+    /* Color del texto */
+    font-weight: bold;
+    /* Negrita para el texto */
+    font-size: 20px;
+    /* Tamaño del texto */
 }
-.blue { background-color: blue; }
-.orange { background-color: orange; }
-.purple { background-color: purple; }
-.green { background-color: green; }
-.red { background-color: red; }
-.yellow { background-color: yellow; color: black;}
+
+.blue {
+    background-color: blue;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.purple {
+    background-color: purple;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+    color: black;
+}
 
 #song {
     display: none;

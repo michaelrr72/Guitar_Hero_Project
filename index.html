@@ -14,33 +14,39 @@
         <h2 class="streak">Racha: 0</h2>
     </div>
 
-    <div class="start">PRESIONA "Q" PARA INICIAR!</div>
-
     <div class="control-panel">
         <button class="play-pause">Pausa</button>
         <button class="mute">Silenciar</button>
     </div>
 
-    <div class="contenedor"> </div>
-    <div class="hit-zone"></div>
-    <div class="instrucciones">
-        <ul>
-            <h1>Instrucciones</h1>
-            <p>A medida que las notas de colores se muevan hacia los círculos en la parte inferior,
-                presiona las teclas correspondientes en secuencia para anotar puntos.</p>
-            <p>¡Si logras acertar suficientes notas seguidas, tu puntuación aumentará!</p>
-            <p>"Q" para iniciar el juego.</p>
-            <p>"P" para pausar el juego.</p>
-            <p>"R" para reiniciar la partida.</p>
-        </ul>
-        <div class="letras">
-            <div class="nota blue">A</div>
-            <div class="nota orange">S</div>
-            <div class="nota purple">D</div>
-            <div class="nota green">J</div>
-            <div class="nota red">K</div>
-            <div class="nota yellow">L</div>
+    <div class="contenedor">
+        <div id="columnaA" data-key="A"></div>
+        <div id="columnaS" data-key="S"></div>
+        <div id="columnaD" data-key="D"></div>
+        <div id="columnaJ" data-key="J"></div>
+        <div id="columnaK" data-key="K"></div>
+        <div id="columnaL" data-key="L"></div>
+
+        <div class="zona-de-acierto">
+            <div class="letras">
+                <div class="nota blue">A</div>
+                <div class="nota orange">S</div>
+                <div class="nota purple">D</div>
+                <div class="nota green">J</div>
+                <div class="nota red">K</div>
+                <div class="nota yellow">L</div>
+            </div>
         </div>
+    </div>
+    <!--<div class="hit-zone"></div>-->
+    <div class="instrucciones">
+        <h1>Instrucciones</h1>
+        <p>A medida que las notas de colores se muevan hacia los círculos en la parte inferior,
+            presiona las teclas correspondientes en secuencia para anotar puntos.</p>
+        <p>¡Si logras acertar suficientes notas seguidas, tu puntuación aumentará!</p>
+        <p>"Q" para iniciar el juego.</p>
+        <p>"P" para pausar el juego.</p>
+        <p>"R" para reiniciar la partida.</p>
     </div>
     <audio id="song"></audio>
     <script src="js/main.js"></script>
